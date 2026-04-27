@@ -7,7 +7,7 @@ from app.modules.usuarios.model import Usuario
 from .model import Categoria
 from .schema import CategoriaCreate, CategoriaUpdate, CategoriaOut
 
-router = APIRouter(prefix="/categorias", tags=["Categorias"])
+router = APIRouter(prefix="/api/categorias", tags=["Categorias"])
 
 
 @router.post("/", response_model=CategoriaOut, status_code=status.HTTP_201_CREATED)

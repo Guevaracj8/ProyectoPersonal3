@@ -8,3 +8,6 @@ class Categoria(Base):
     id          = Column(Integer, primary_key=True, index=True)
     nombre      = Column(String(100), unique=True, nullable=False)
     descripcion = Column(String(255))
+
+
+    productos = relationship("Producto", back_populates="categoria")

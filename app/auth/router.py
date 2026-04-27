@@ -6,7 +6,7 @@ from app.database.db import get_db
 from app.auth.login_manager import autenticar_usuario
 from app.modules.usuarios.schema import TokenResponse, LoginRequest
 
-router = APIRouter(prefix="/auth", tags=["Autenticación"])
+router = APIRouter(prefix="/api/auth", tags=["Autenticación"])
 
 
 @router.post("/login", response_model=TokenResponse)

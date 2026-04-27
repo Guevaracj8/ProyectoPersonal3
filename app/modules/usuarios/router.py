@@ -7,7 +7,7 @@ from app.auth.password import hash_password
 from .model import Usuario
 from .schema import UsuarioCreate, UsuarioUpdate, UsuarioOut
 
-router = APIRouter(prefix="/usuarios", tags=["Usuarios"])
+router = APIRouter(prefix="/api/usuarios", tags=["Usuarios"])
 
 
 #Solo el admin creara usuarios

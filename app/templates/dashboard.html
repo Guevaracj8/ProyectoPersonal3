@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FerreStock — Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">FerreStock</div>
+    <div class="nav-links">
+      <a href="/dashboard" class="active">Dashboard</a>
+      <a href="/productos">Productos</a>
+      <a href="/ventas">Ventas</a>
+      <a href="/reportes">Reportes</a>
+      <a href="/usuarios">Usuarios</a>
+      <a href="/categorias">Categorias</a>
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2 class="page-title">Dashboard</h2>
+
+    <div class="cards-grid" id="statsGrid">
+      <div class="stat-card">
+        <div>
+          <p class="stat-label">Productos en inventario</p>
+          <p class="stat-value" id="totalProductos">—</p>
+        </div>
+      </div>
+      <div class="stat-card alert-card" id="stockCriticoCard">
+        <div>
+          <p class="stat-label">Stock crítico</p>
+          <p class="stat-value" id="totalCritico">—</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <p class="stat-label">Ventas esta semana</p>
+          <p class="stat-value" id="ventasSemana">—</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <p class="stat-label">Ganancias esta semana</p>
+          <p class="stat-value" id="gananciasSemana">—</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h3>Productos con Stock Crítico</h3>
+      <div id="stockCriticoList" class="table-wrapper">
+        <p class="empty-msg">Cargando...</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
