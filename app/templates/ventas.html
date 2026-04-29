@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FerreStock — Ventas</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">🔧 FerreStock</div>
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <a href="/productos">Productos</a>
+      <a href="/ventas" class="active">Ventas</a>
+      <a href="/reportes">Reportes</a>
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2 class="page-title">Gestión de Ventas</h2>
+
+    <div class="section">
+      <h3>Registrar Nueva Venta</h3>
+
+      <div id="itemsVenta"></div>
+
+      <button class="btn-secondary" onclick="agregarItem()" style="margin:.8rem 0">
+        + Agregar Producto
+      </button>
+
+      <div id="resumenVenta" class="hidden" style="margin-top:1rem;padding:1rem;background:var(--blue-light);border-radius:8px;">
+        <strong>Total estimado:</strong> <span id="totalEstimado">$ 0.00</span>
+      </div>
+
+      <div id="stockCriticoAlerta" class="hidden" style="margin-top:.8rem;padding:.8rem;background:#FEF9E7;border:1px solid var(--accent);border-radius:8px;color:#7D6608;">
+        ⚠️ <strong>Stock crítico detectado:</strong> <span id="productosCriticos"></span>
+      </div>
+
+      <div id="ventaError" class="error-msg hidden" style="margin-top:.8rem"></div>
+      <div id="ventaSuccess" class="success-msg hidden" style="margin-top:.8rem"></div>
+
+      <button class="btn-primary" onclick="registrarVenta()" style="margin-top:1rem;max-width:200px">
+        Confirmar Venta
+      </button>
+    </div>
+
+    <div class="section">
+      <div class="toolbar">
+        <h3>Historial de Ventas</h3>
+        <div class="toolbar-left" id="filtrosAdmin">
+          <input type="date" id="fechaDesde" style="padding:.45rem .7rem;border:1.5px solid var(--border);border-radius:8px"/>
+          <input type="date" id="fechaHasta" style="padding:.45rem .7rem;border:1.5px solid var(--border);border-radius:8px"/>
+          <button class="btn-secondary" onclick="cargarVentas()">Filtrar</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Fecha</th><th>Vendedor</th>
+              <th>Total</th><th>Ganancia</th><th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyVentas">
+            <tr><td colspan="6" class="empty-msg">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/ventas.js"></script>
+</body>
+</html>

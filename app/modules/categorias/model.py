@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from app.database.db import Base
 
 
@@ -10,4 +11,3 @@ class Categoria(Base):
     descripcion = Column(String(255))
 
 
-    productos = relationship("Producto", back_populates="categoria")

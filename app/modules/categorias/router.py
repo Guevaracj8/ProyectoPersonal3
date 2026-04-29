@@ -67,6 +67,10 @@ def eliminar_categoria(
     cat = db.query(Categoria).filter(Categoria.id == categoria_id).first()
     if not cat:
         raise HTTPException(status_code=404, detail="Categoría no encontrada.")
-   
+    if cat.productos:
+        raise HTTPException(
+            status_code=400,
+            detail="No se puede eliminar una categoría con productos asociados."
+        )
     db.delete(cat)
     db.commit()
