@@ -7,6 +7,6 @@ bcrypt==4.0.1
 python-multipart==0.0.9
 pydantic[email]==2.7.1
 reportlab==4.1.0
-pandas==2.1.4
+pandas
 openpyxl==3.1.2
 jinja2==3.1.3
