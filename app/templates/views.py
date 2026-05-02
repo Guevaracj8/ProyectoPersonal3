@@ -30,4 +30,8 @@ def pagina_productos(request: Request):
 
 @router.get("/ventas", response_class=HTMLResponse)
 def pagina_ventas(request: Request):
-    return templates.TemplateResponse("ventas.html", {"request": request})   
+    return templates.TemplateResponse("ventas.html", {"request": request}) 
+    
+@router.get("/reportes", response_class=HTMLResponse)
+def pagina_ventas(request: Request):
+    return templates.TemplateResponse("reportes.html", {"request": request})      

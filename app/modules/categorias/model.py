@@ -10,4 +10,4 @@ class Categoria(Base):
     nombre      = Column(String(100), unique=True, nullable=False)
     descripcion = Column(String(255))
 
-
+    productos = relationship("Producto", back_populates="categoria")

@@ -13,7 +13,8 @@ class Venta(Base):
     ganancia_calculada  = Column(Float, default=0.0)
     estado              = Column(String(20), default="pagado")  # pagado o pendiente
 
-
+    usuario  = relationship("Usuario")
+    detalles = relationship("DetalleVenta", back_populates="venta", cascade="all, delete-orphan")
 
 class DetalleVenta(Base):
     __tablename__ = "detalles_venta"
@@ -26,7 +27,8 @@ class DetalleVenta(Base):
     subtotal        = Column(Float, nullable=False)    # precio(de cada uno ps) × cantidad
     ganancia_linea  = Column(Float, nullable=False)   # (precio de venta - precio de compra) por la cantidad
 
-    
+    venta    = relationship("Venta", back_populates="detalles")
+    producto = relationship("Producto", back_populates="detalles_venta")
 
 
 class MovimientoStock(Base):
@@ -40,4 +42,4 @@ class MovimientoStock(Base):
     motivo      = Column(String(255))
     fecha       = Column(DateTime, server_default=func.now())
 
-
+    producto = relationship("Producto", back_populates="movimientos_stock")

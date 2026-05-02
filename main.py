@@ -9,6 +9,7 @@ from app.modules.usuarios.router import router as usuarios_router
 from app.modules.categorias.router import router as categorias_router 
 from app.modules.productos.router  import router as productos_router
 from app.modules.ventas.router     import router as ventas_router
+from app.modules.reportes.router import router as reportes_router
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from app.templates.views import router as views_router 
@@ -21,7 +22,8 @@ app.include_router(auth_router)
 app.include_router(usuarios_router)
 app.include_router(categorias_router) 
 app.include_router(productos_router)    
-app.include_router(ventas_router)         
+app.include_router(ventas_router)  
+app.include_router(reportes_router)        
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 app.include_router(views_router)

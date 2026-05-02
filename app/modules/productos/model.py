@@ -16,4 +16,6 @@ class Producto(Base):
     categoria_id        = Column(Integer, ForeignKey("categorias.id"), nullable=False)
     fecha_actualizacion = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
-
+    categoria           = relationship("Categoria", back_populates="productos")
+    detalles_venta      = relationship("DetalleVenta", back_populates="producto")
+    movimientos_stock   = relationship("MovimientoStock", back_populates="producto")

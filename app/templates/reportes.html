@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FerreStock — Reportes</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">🔧 FerreStock</div>
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <a href="/productos">Productos</a>
+      <a href="/ventas">Ventas</a>
+      <a href="/reportes" class="active">Reportes</a>
+      <a href="/usuarios">Usuarios</a>
+      <a href="/categorias">Categorias</a>
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2 class="page-title">Reportes y Exportaciones</h2>
+
+    <div class="section">
+      <h3>Reporte PDF de Ventas</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1rem">
+        Genera un PDF con el resumen de ventas, ganancias e ingresos del período seleccionado.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <select id="periodoPDF" style="padding:.5rem .8rem;border:1.5px solid var(--border);border-radius:8px">
+          <option value="diario">Diario</option>
+          <option value="semanal" selected>Semanal</option>
+          <option value="mensual">Mensual</option>
+        </select>
+        <button class="btn-secondary" onclick="descargarPDFVentas()">Descargar PDF</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Recibo Individual por Venta</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1rem">
+        Ingresa el ID de una venta para generar su recibo en PDF.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <input type="number" id="ventaIdRecibo" placeholder="ID de la venta" min="1"
+               style="padding:.5rem .8rem;border:1.5px solid var(--border);border-radius:8px;width:160px"/>
+        <button class="btn-secondary" onclick="descargarRecibo()">Descargar Recibo</button>
+      </div>
+      <div id="reciboError" class="error-msg hidden" style="margin-top:.8rem"></div>
+    </div>
+
+    <div class="section">
+      <h3>Exportar Ventas a Excel</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1rem">
+        Exporta el historial de ventas con detalle de productos al formato Excel (.xlsx).
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <input type="date" id="excelDesde" style="padding:.45rem .7rem;border:1.5px solid var(--border);border-radius:8px"/>
+        <input type="date" id="excelHasta" style="padding:.45rem .7rem;border:1.5px solid var(--border);border-radius:8px"/>
+        <button class="btn-secondary" onclick="descargarExcelVentas()">Descargar Excel</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Exportar Inventario a Excel</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1rem">
+        Exporta el catálogo completo de productos con precios, stock y margen de ganancia.
+      </p>
+      <button class="btn-secondary" onclick="descargarExcelInventario()">Descargar Inventario</button>
+    </div>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/reportes.js"></script>
+</body>
+</html>
